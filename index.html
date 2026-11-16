@@ -11,7 +11,7 @@
     <meta property="og:type" content="website">
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap');
+        @import url('https://googleapis.com');
 
         * {
             box-sizing: border-box;
@@ -30,7 +30,6 @@
             overflow-x: hidden;
         }
 
-        /* Contenedor principal estilo tarjeta física fina */
         .card-container {
             background-color: #ffffff;
             width: 100%;
@@ -43,14 +42,19 @@
             text-align: center;
         }
 
-        /* Imagen de fondo / cabecera floral elegante */
+        /* Cabecera floral con el título centrado adentro */
         .card-header-image {
             width: 100%;
-            height: 180px;
-            background-image: url('https://images.unsplash.com/photo-1579532649672-13fac8cde626?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D');
+            height: 220px;
+            background-image: url('https://unsplash.com');
             background-size: cover;
             background-position: center;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
 
         .card-header-image::after {
@@ -59,13 +63,45 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 60px;
+            height: 45px;
             background: linear-gradient(to top, #ffffff, transparent);
+            pointer-events: none;
         }
 
-        /* Marco decorativo interno */
+        .header-overlay-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .greeting {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: #6b5847;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .script-title {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 3.4rem;
+            color: #5c4938;
+            line-height: 1;
+            margin-bottom: 6px;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .sub-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+            color: #4a3e3d;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
         .card-body {
-            padding: 20px 35px 40px 35px;
+            padding: 15px 30px 30px 30px;
             position: relative;
         }
 
@@ -81,7 +117,14 @@
             opacity: 0.6;
         }
 
-        /* Tipografías y textos */
+        .message {
+            font-size: 0.94rem;
+            color: #475569;
+            line-height: 1.65;
+            margin-bottom: 24px;
+            font-weight: 400;
+        }
+        
         /* Cuadro de Detalles del Evento */
         .details-box {
             background-color: #faf7f5;
