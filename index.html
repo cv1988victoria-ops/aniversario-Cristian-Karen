@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invitación - Primer Aniversario de Bodas</title>
 
-    <meta property="og:title" content="Invitación - Primer Aniversario de Bodas">
-    <meta property="og:description" content="Cristian, Karen y Evelyn Victoria los invitan a celebrar este día especial.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1579532649672-13fac8cde626?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D">
-    <meta property="og:type" content="website">
-    
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+
     <style>
-        @import url('https://googleapis.com');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap');
 
         * {
             box-sizing: border-box;
@@ -30,6 +29,7 @@
             overflow-x: hidden;
         }
 
+        /* Contenedor principal estilo tarjeta física fina */
         .card-container {
             background-color: #ffffff;
             width: 100%;
@@ -42,29 +42,30 @@
             text-align: center;
         }
 
-        /* Cabecera floral con el título centrado adentro */
+        /* Imagen de fondo / cabecera floral elegante */
         .card-header-image {
             width: 100%;
-            height: 220px;
-            background-image: url('https://unsplash.com');
+            height: 245px;
+            background-image: url('https://images.unsplash.com/photo-1579532649672-13fac8cde626?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D');
             background-size: cover;
             background-position: center;
             position: relative;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-end;
             align-items: center;
-            padding: 20px;
+            padding: 20px 20px 28px 20px;
         }
 
+        /* Degradado suave hacia abajo para que el texto resalte sin tapar las rosas */
         .card-header-image::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 45px;
-            background: linear-gradient(to top, #ffffff, transparent);
+            height: 65%;
+            background: linear-gradient(to top, #ffffff 18%, rgba(255, 255, 255, 0.78) 55%, transparent 100%);
             pointer-events: none;
         }
 
@@ -73,35 +74,9 @@
             z-index: 2;
         }
 
-        .greeting {
-            font-size: 0.78rem;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            color: #6b5847;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .script-title {
-            font-family: 'Pinyon Script', cursive;
-            font-size: 3.4rem;
-            color: #5c4938;
-            line-height: 1;
-            margin-bottom: 6px;
-            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
-        }
-
-        .sub-title {
-            font-family: 'Cinzel', serif;
-            font-size: 0.95rem;
-            color: #4a3e3d;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
+        /* Marco decorativo interno */
         .card-body {
-            padding: 15px 30px 30px 30px;
+            padding: 20px 35px 40px 35px;
             position: relative;
         }
 
@@ -117,14 +92,53 @@
             opacity: 0.6;
         }
 
-        .message {
-            font-size: 0.94rem;
-            color: #475569;
-            line-height: 1.65;
-            margin-bottom: 24px;
+        /* Tipografías y textos */
+        .greeting {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #8c7662;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .script-text {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 3rem;
+            color: #6b5847;
+            line-height: 1.05;
+            margin-bottom: 6px;
+        }
+
+        .main-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: #4a3e3d;
+            letter-spacing: 2px;
+            margin-bottom: 0px;
             font-weight: 400;
         }
-        
+
+        .divider {
+            width: 50px;
+            height: 1px;
+            background-color: #cbd5e1;
+            margin: 15px auto;
+        }
+
+        .message {
+            font-size: 0.95rem;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .message strong {
+            color: #475569;
+            font-weight: 600;
+        }
+
         /* Cuadro de Detalles del Evento */
         .details-box {
             background-color: #faf7f5;
@@ -267,16 +281,29 @@
             text-align: left;
         }
 
-        .summary-inline {
+        .summary-card {
+            background-color: #8c7662;
+            color: #ffffff;
+            border-radius: 10px;
+            padding: 15px;
             display: flex;
-            justify-content: center;
-            gap: 22px;
-            font-size: 0.78rem;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .summary-item span {
+            display: block;
+            font-size: 1.5rem;
             font-weight: 600;
+        }
+
+        .summary-item small {
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #64748b;
-            margin-bottom: 14px;
+            opacity: 0.9;
         }
 
         .guests-title {
@@ -334,20 +361,24 @@
 <body>
 
     <div class="card-container">
-        <!-- Imagen de cabecera con el título dentro del recuadro rosado -->
+        <!-- Imagen de cabecera con rosas finas -->
         <div class="card-header-image">
             <div class="header-overlay-content">
                 <p class="greeting">¡Hola, queridos hermanos!</p>
-                <h1 class="script-title">Primer Aniversario</h1>
-                <p class="sub-title">De Nuestra Boda</p>
+                <p class="script-text">Primer Aniversario</p>
+                <h1 class="main-title">De Nuestra Boda</h1>
             </div>
         </div>
         
         <div class="card-body">
             <div class="decorative-border"></div>
             
+            <div class="divider"></div>
+            
             <p class="message">
-                Con el corazón lleno de agradecimiento a Jehová, Cristian, Karen y nuestra amada hija Evelyn Victoria queremos invitarlos a celebrar este momento tan especial. Ha sido una gran bendición caminar juntos este primer año como familia y contar con el cariño de todos ustedes.
+                Con el corazón lleno de agradecimiento a <strong>Jehová</strong>, 
+                <strong>Cristian</strong>, <strong>Karen</strong> y nuestra amada hija <strong>Evelyn Victoria</strong> queremos invitarlos a celebrar este momento tan especial. 
+                Ha sido una gran bendición caminar juntos este primer año como familia y contar con el cariño de todos ustedes. Nos dará muchísimo gusto que nos acompañen a festejar y dar gracias por este tiempo.
             </p>
             
             <!-- Detalles -->
@@ -368,11 +399,11 @@
             
             <!-- Nota del postre opcional -->
             <div class="note-box">
-                <p>🧁 <strong>Nota:</strong> Si gustan, pueden traer su postre favorito para compartir entre todos.</p>
+                <p style="margin-bottom: 10px;">🧁 <strong>Nota:</strong> Si gustan, pueden traer su postre favorito para compartir entre todos.</p>
                 <p>✨ <strong>Vestimenta:</strong> Casual elegante (arreglados para la ocasión, pero cómodos para disfrutar la tarde).</p>
             </div>
             
-            <p class="footer-message">¡Esperamos verlos ahí para disfrutar juntos!</p>
+            <p class="footer-message">¡Esperamos verlos para disfrutar juntos!</p>
                         
             <!-- Botón de Confirmación Activo -->
             <button type="button" class="rsvp-button" id="toggleFormBtn" onclick="mostrarFormulario()">
@@ -405,10 +436,18 @@
 
             <!-- Sumario y Lista de Confirmados en Vivo -->
             <div class="guests-section">
-                <div class="summary-inline">
-                    <span>Confirmaciones (<span id="totalFamilies">0</span>)</span>
-                    <span>Total Personas (<span id="totalPeople">0</span>)</span>
+                <div class="summary-card">
+                    <div class="summary-item">
+                        <span id="totalFamilies">0</span>
+                        <small>Confirmaciones</small>
+                    </div>
+                    <div class="summary-item">
+                        <span id="totalPeople">0</span>
+                        <small>Total Personas</small>
+                    </div>
                 </div>
+
+                <h3 class="guests-title">Hermanos Confirmados</h3>
                 <ul class="guests-list" id="guestsList">
                     <li style="justify-content: center; color: #94a3b8;">Cargando lista de invitados...</li>
                 </ul>
