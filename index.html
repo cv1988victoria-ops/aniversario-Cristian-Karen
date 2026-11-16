@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación - Primer Aniversario de Bodas</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f7f3f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Contenedor principal estilo tarjeta física fina */
+        .card-container {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 450px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(163, 145, 131, 0.2);
+            border: 1px solid rgba(224, 211, 201, 0.5);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        /* Imagen de fondo / cabecera floral elegante */
+        .card-header-image {
+            width: 100%;
+            height: 180px;
+            background-image: url('https://images.unsplash.com/photo-1579532649672-13fac8cde626?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .card-header-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(to top, #ffffff, transparent);
+        }
+
+        /* Marco decorativo interno */
+        .card-body {
+            padding: 20px 35px 40px 35px;
+            position: relative;
+        }
+
+        .decorative-border {
+            position: absolute;
+            top: 10px;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            border: 1px solid #e0d3c9;
+            border-radius: 12px;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        /* Tipografías y textos */
+        .greeting {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #8c7662;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .script-text {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 3.2rem;
+            color: #bfa38a;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .main-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: #4a3e3d;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .divider {
+            width: 50px;
+            height: 1px;
+            background-color: #cbd5e1;
+            margin: 15px auto;
+        }
+
+        .message {
+            font-size: 0.95rem;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .message strong {
+            color: #475569;
+            font-weight: 600;
+        }
+
+        /* Cuadro de Detalles del Evento */
+        .details-box {
+            background-color: #faf7f5;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-left: 3px solid #bfa38a;
+            text-align: left;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            color: #475569;
+        }
+
+        .detail-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .icon {
+            font-size: 1.2rem;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #8c7662;
+            margin-right: 5px;
+        }
+
+        /* Nota especial de postre */
+        .note-box {
+            font-size: 0.85rem;
+            color: #64748b;
+            background-color: #f1f5f9;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .footer-message {
+            font-size: 0.9rem;
+            color: #475569;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        /* Botón de Interacción de WhatsApp simulado */
+        .rsvp-button {
+            display: inline-block;
+            width: 100%;
+            padding: 14px;
+            background-color: #8c7662;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 12px rgba(140, 118, 98, 0.2);
+            margin-top: 10px;
+        }
+
+        .rsvp-button:hover {
+            background-color: #735f4e;
+        }
+
+        .rsvp-button:disabled {
+            background-color: #cbd5e1;
+            cursor: not-allowed;
+        }
+
+        /* Formulario de Confirmación */
+        .rsvp-form-container {
+            display: none;
+            background-color: #faf7f5;
+            border: 1px solid #e0d3c9;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 15px;
+            text-align: left;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #4a3e3d;
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            color: #334155;
+            background-color: #ffffff;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #8c7662;
+        }
+
+        .status-msg {
+            font-size: 0.85rem;
+            margin-top: 10px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* Sección de Lista de Confirmados y Sumario */
+        .guests-section {
+            margin-top: 28px;
+            padding-top: 20px;
+            border-top: 1px dashed #e0d3c9;
+            text-align: left;
+        }
+
+        .summary-card {
+            background-color: #8c7662;
+            color: #ffffff;
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .summary-item span {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .summary-item small {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        .guests-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #8c7662;
+            margin-bottom: 10px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .guests-list {
+            list-style: none;
+            max-height: 220px;
+            overflow-y: auto;
+            background-color: #faf7f5;
+            border-radius: 8px;
+            padding: 10px 15px;
+            border: 1px solid #e0d3c9;
+        }
+
+        .guests-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #ede5df;
+            font-size: 0.88rem;
+            color: #475569;
+        }
+
+        .guests-list li:last-child {
+            border-bottom: none;
+        }
+
+        .badge-count {
+            background-color: #e0d3c9;
+            color: #4a3e3d;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        footer {
+            font-size: 0.7rem;
+            color: #475569;
+            opacity: 0.55; 
+            margin-top: 15px;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <!-- Imagen de cabecera con rosas finas -->
+        <div class="card-header-image"></div>
+        
+        <div class="card-body">
+            <div class="decorative-border"></div>
+            
+            <p class="greeting">¡Hola, queridos hermanos!</p>
+            <p class="script-text">Nuestra Boda</p>
+            <h1 class="main-title">Primer Aniversario</h1>
+            
+            <div class="divider"></div>
+            
+            <p class="message">
+                Con el corazón lleno de agradecimiento a <strong>Jehová</strong>, 
+                <strong>Cristian Vargas</strong>, <strong>Karen Sáenz</strong> y nuestra amada hija <strong>Evelyn Victoria Sáenz</strong> queremos invitarlos a celebrar este momento tan especial. 
+                Ha sido una gran bendición caminar juntos este primer año como familia y contar con el cariño de nuestra familia espiritual. Nos dará muchísimo gusto que nos acompañen a festejar y dar gracias por este tiempo.
+            </p>
+            
+            <!-- Detalles -->
+            <div class="details-box">
+                <div class="detail-item">
+                    <span class="icon">📅</span>
+                    <span class="detail-label">¿Cuándo?:</span> Sábado 12 de Diciembre
+                </div>
+                <div class="detail-item">
+                    <span class="icon">⏰</span>
+                    <span class="detail-label">¿A qué hora?:</span> 2:00 p. m.
+                </div>
+                <div class="detail-item">
+                    <span class="icon">📍</span>
+                    <span class="detail-label">¿Dónde?:</span> Por confirmar (les pasaremos la ubicación exacta)
+                </div>
+            </div>
+            
+            <!-- Nota del postre opcional -->
+            <div class="note-box">
+                🍰 <strong>Nota:</strong> Si gustan, pueden traer su postre de preferencia para compartir.
+            </div>
+            
+            <p class="footer-message">¡Esperamos verlos ahí para disfrutar juntos!</p>
+                        
+            <!-- Botón de Confirmación Activo -->
+            <button type="button" class="rsvp-button" id="toggleFormBtn" onclick="mostrarFormulario()">
+                Confirmar Asistencia
+            </button>
+
+            <!-- Formulario Desplegable -->
+            <div class="rsvp-form-container" id="rsvpFormContainer">
+                <form id="rsvpForm">
+                    <div class="form-group">
+                        <label for="guestName">Tu nombre y apellido:</label>
+                        <input type="text" id="guestName" placeholder="Ej. Familia Pérez o Juan Gómez" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="companions">¿Cuántas personas te acompañarán? (Sin contarte a ti):</label>
+                        <select id="companions">
+                            <option value="0">0 (Voy solo/a - 1 persona en total)</option>
+                            <option value="1">1 acompañante (2 personas en total)</option>
+                            <option value="2">2 acompañantes (3 personas en total)</option>
+                            <option value="3">3 acompañantes (4 personas en total)</option>
+                            <option value="4">4 acompañantes (5 personas en total)</option>
+                            <option value="5">5 acompañantes (6 personas en total)</option>
+                            <option value="6">6 acompañantes (7 personas en total)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="rsvp-button" id="submitBtn">Enviar Confirmación</button>
+                    <p class="status-msg" id="statusMsg"></p>
+                </form>
+            </div>
+
+            <!-- Sumario y Lista de Confirmados en Vivo -->
+            <div class="guests-section">
+                <div class="summary-card">
+                    <div class="summary-item">
+                        <span id="totalFamilies">0</span>
+                        <small>Confirmaciones</small>
+                    </div>
+                    <div class="summary-item">
+                        <span id="totalPeople">0</span>
+                        <small>Total Personas</small>
+                    </div>
+                </div>
+
+                <h3 class="guests-title">Hermanos Confirmados</h3>
+                <ul class="guests-list" id="guestsList">
+                    <li style="justify-content: center; color: #94a3b8;">Cargando lista de invitados...</li>
+                </ul>
+            </div>
+
+       <footer>
+        <p>&copy; 2026 Cristian Vargas.</p>
+        </footer>
+        </div>
+    </div>
+
+    <script>
+        // PEGA AQUÍ EL ENLACE QUE TE DARÁ GOOGLE APPS SCRIPT:
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzg3BcJyqw5LA5C_VEmomXDKAPXuWfERsiOWcY35EnLNvLKsp-2tXe4dIB5Sv-k1tS-/exec";
+
+        function mostrarFormulario() {
+            const formContainer = document.getElementById('rsvpFormContainer');
+            const toggleBtn = document.getElementById('toggleFormBtn');
+            formContainer.style.display = 'block';
+            toggleBtn.style.display = 'none';
+        }
+
+        async function cargarInvitados() {
+            const listEl = document.getElementById('guestsList');
+            const totalFamiliesEl = document.getElementById('totalFamilies');
+            const totalPeopleEl = document.getElementById('totalPeople');
+
+            if (SCRIPT_URL === "PEGA_AQUI_TU_URL_DE_GOOGLE_APPS_SCRIPT") {
+                listEl.innerHTML = '<li style="justify-content:center; color:#8c7662; text-align:center;">Falta conectar la URL de Google Sheets para ver la lista en vivo.</li>';
+                return;
+            }
+
+            try {
+                const response = await fetch(SCRIPT_URL);
+                const data = await response.json();
+
+                listEl.innerHTML = '';
+                let sumaPersonas = 0;
+
+                if (data.length === 0) {
+                    listEl.innerHTML = '<li style="justify-content:center; color:#94a3b8;">Aún no hay confirmaciones. ¡Sé el primero!</li>';
+                } else {
+                    data.forEach(invitado => {
+                        const personasPorGrupo = 1 + parseInt(invitado.acompanantes || 0);
+                        sumaPersonas += personasPorGrupo;
+
+                        const li = document.createElement('li');
+                        li.innerHTML = `
+                            <span><strong>${invitado.nombre}</strong></span>
+                            <span class="badge-count">${personasPorGrupo} ${personasPorGrupo === 1 ? 'persona' : 'personas'}</span>
+                        `;
+                        listEl.appendChild(li);
+                    });
+                }
+
+                totalFamiliesEl.textContent = data.length;
+                totalPeopleEl.textContent = sumaPersonas;
+
+            } catch (error) {
+                listEl.innerHTML = '<li style="justify-content:center; color:#ef4444;">No se pudo cargar la lista en este momento.</li>';
+            }
+        }
+
+        document.getElementById('rsvpForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const nombre = document.getElementById('guestName').value.trim();
+            const acompanantes = parseInt(document.getElementById('companions').value);
+            const submitBtn = document.getElementById('submitBtn');
+            const statusMsg = document.getElementById('statusMsg');
+
+            if (!nombre) return;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Guardando...';
+            statusMsg.textContent = '';
+
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({ nombre: nombre, acompanantes: acompanantes })
+                });
+
+                statusMsg.style.color = '#16a34a';
+                statusMsg.textContent = '¡Gracias! Tu asistencia ha sido registrada.';
+                document.getElementById('rsvpForm').reset();
+                
+                await cargarInvitados();
+
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Enviar otra confirmación';
+                }, 2000);
+
+            } catch (error) {
+                statusMsg.style.color = '#dc2626';
+                statusMsg.textContent = 'Hubo un error al guardar. Intenta de nuevo.';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Enviar Confirmación';
+            }
+        });
+
+        cargarInvitados();
+    </script>
+</body>
+</html>
