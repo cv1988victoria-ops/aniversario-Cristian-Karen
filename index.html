@@ -6,7 +6,7 @@
     <title>Invitación - Primer Aniversario de Bodas</title>
 
     <meta property="og:title" content="Invitación - Primer Aniversario de Bodas">
-    <meta property="og:description" content="Cristian Vargas, Karen Sáenz y Evelyn Victoria los invitan a celebrar este día especial.">
+    <meta property="og:description" content="Cristian, Karen y Evelyn Victoria los invitan a celebrar este día especial.">
     <meta property="og:image" content="https://images.unsplash.com/photo-1579532649672-13fac8cde626?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D">
     <meta property="og:type" content="website">
     
@@ -82,52 +82,6 @@
         }
 
         /* Tipografías y textos */
-        .greeting {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #8c7662;
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-
-        .script-text {
-            font-family: 'Pinyon Script', cursive;
-            font-size: 3.2rem;
-            color: #bfa38a;
-            line-height: 1;
-            margin-bottom: 5px;
-        }
-
-        .main-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
-            color: #4a3e3d;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            font-weight: 400;
-        }
-
-        .divider {
-            width: 50px;
-            height: 1px;
-            background-color: #cbd5e1;
-            margin: 15px auto;
-        }
-
-        .message {
-            font-size: 0.95rem;
-            color: #64748b;
-            line-height: 1.6;
-            margin-bottom: 25px;
-            font-weight: 300;
-        }
-
-        .message strong {
-            color: #475569;
-            font-weight: 600;
-        }
-
         /* Cuadro de Detalles del Evento */
         .details-box {
             background-color: #faf7f5;
@@ -270,29 +224,16 @@
             text-align: left;
         }
 
-        .summary-card {
-            background-color: #8c7662;
-            color: #ffffff;
-            border-radius: 10px;
-            padding: 15px;
+        .summary-inline {
             display: flex;
-            justify-content: space-around;
-            align-items: center;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .summary-item span {
-            display: block;
-            font-size: 1.5rem;
+            justify-content: center;
+            gap: 22px;
+            font-size: 0.78rem;
             font-weight: 600;
-        }
-
-        .summary-item small {
-            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            opacity: 0.9;
+            color: #64748b;
+            margin-bottom: 14px;
         }
 
         .guests-title {
@@ -357,15 +298,11 @@
             <div class="decorative-border"></div>
             
             <p class="greeting">¡Hola, queridos hermanos!</p>
-            <p class="script-text">Nuestra Boda</p>
-            <h1 class="main-title">Primer Aniversario</h1>
-            
-            <div class="divider"></div>
+            <h1 class="script-title">Primer Aniversario</h1>
+            <p class="sub-title">De Nuestra Boda</p>
             
             <p class="message">
-                Con el corazón lleno de agradecimiento a <strong>Jehová</strong>, 
-                <strong>Cristian Vargas</strong>, <strong>Karen Sáenz</strong> y nuestra amada hija <strong>Evelyn Victoria Sáenz</strong> queremos invitarlos a celebrar este momento tan especial. 
-                Ha sido una gran bendición caminar juntos este primer año como familia y contar con el cariño de nuestra familia espiritual. Nos dará muchísimo gusto que nos acompañen a festejar y dar gracias por este tiempo.
+                Con el corazón lleno de agradecimiento a Jehová, Cristian, Karen y nuestra amada hija Evelyn Victoria queremos invitarlos a celebrar este momento tan especial. Ha sido una gran bendición caminar juntos este primer año como familia y contar con el cariño de todos ustedes.
             </p>
             
             <!-- Detalles -->
@@ -386,7 +323,8 @@
             
             <!-- Nota del postre opcional -->
             <div class="note-box">
-                🍰 <strong>Nota:</strong> Si gustan, pueden traer su postre de preferencia para compartir.
+                <p>🧁 <strong>Nota:</strong> Si gustan, pueden traer su postre favorito para compartir entre todos.</p>
+                <p>✨ <strong>Vestimenta:</strong> Casual elegante (arreglados para la ocasión, pero cómodos para disfrutar la tarde).</p>
             </div>
             
             <p class="footer-message">¡Esperamos verlos ahí para disfrutar juntos!</p>
@@ -422,18 +360,10 @@
 
             <!-- Sumario y Lista de Confirmados en Vivo -->
             <div class="guests-section">
-                <div class="summary-card">
-                    <div class="summary-item">
-                        <span id="totalFamilies">0</span>
-                        <small>Confirmaciones</small>
-                    </div>
-                    <div class="summary-item">
-                        <span id="totalPeople">0</span>
-                        <small>Total Personas</small>
-                    </div>
+                <div class="summary-inline">
+                    <span>Confirmaciones (<span id="totalFamilies">0</span>)</span>
+                    <span>Total Personas (<span id="totalPeople">0</span>)</span>
                 </div>
-
-                <h3 class="guests-title">Hermanos Confirmados</h3>
                 <ul class="guests-list" id="guestsList">
                     <li style="justify-content: center; color: #94a3b8;">Cargando lista de invitados...</li>
                 </ul>
