@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invitación - Primer Aniversario de Bodas</title>
+
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap');
 
@@ -40,21 +45,33 @@
         /* Imagen de fondo / cabecera floral elegante */
         .card-header-image {
             width: 100%;
-            height: 180px;
+            height: 245px;
             background-image: url('https://images.unsplash.com/photo-1579532649672-13fac8cde626?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D');
             background-size: cover;
             background-position: center;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 20px 20px 28px 20px;
         }
 
+        /* Degradado suave hacia abajo para que el texto resalte sin tapar las rosas */
         .card-header-image::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 60px;
-            background: linear-gradient(to top, #ffffff, transparent);
+            height: 65%;
+            background: linear-gradient(to top, #ffffff 18%, rgba(255, 255, 255, 0.78) 55%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .header-overlay-content {
+            position: relative;
+            z-index: 2;
         }
 
         /* Marco decorativo interno */
@@ -81,16 +98,16 @@
             text-transform: uppercase;
             letter-spacing: 3px;
             color: #8c7662;
-            margin-bottom: 15px;
+            margin-bottom: 6px;
             font-weight: 500;
         }
 
         .script-text {
             font-family: 'Pinyon Script', cursive;
-            font-size: 3.2rem;
-            color: #bfa38a;
-            line-height: 1;
-            margin-bottom: 5px;
+            font-size: 3rem;
+            color: #6b5847;
+            line-height: 1.05;
+            margin-bottom: 6px;
         }
 
         .main-title {
@@ -98,7 +115,7 @@
             font-size: 1.4rem;
             color: #4a3e3d;
             letter-spacing: 2px;
-            margin-bottom: 20px;
+            margin-bottom: 0px;
             font-weight: 400;
         }
 
@@ -345,21 +362,23 @@
 
     <div class="card-container">
         <!-- Imagen de cabecera con rosas finas -->
-        <div class="card-header-image"></div>
+        <div class="card-header-image">
+            <div class="header-overlay-content">
+                <p class="greeting">¡Hola, queridos hermanos!</p>
+                <p class="script-text">Primer Aniversario</p>
+                <h1 class="main-title">De Nuestra Boda</h1>
+            </div>
+        </div>
         
         <div class="card-body">
             <div class="decorative-border"></div>
-            
-            <p class="greeting">¡Hola, queridos hermanos!</p>
-            <p class="script-text">Nuestra Boda</p>
-            <h1 class="main-title">Primer Aniversario</h1>
             
             <div class="divider"></div>
             
             <p class="message">
                 Con el corazón lleno de agradecimiento a <strong>Jehová</strong>, 
-                <strong>Cristian Vargas</strong>, <strong>Karen Sáenz</strong> y nuestra amada hija <strong>Evelyn Victoria Sáenz</strong> queremos invitarlos a celebrar este momento tan especial. 
-                Ha sido una gran bendición caminar juntos este primer año como familia y contar con el cariño de nuestra familia espiritual. Nos dará muchísimo gusto que nos acompañen a festejar y dar gracias por este tiempo.
+                <strong>Cristian</strong>, <strong>Karen</strong> y nuestra amada hija <strong>Evelyn Victoria</strong> queremos invitarlos a celebrar este momento tan especial. 
+                Ha sido una gran bendición caminar juntos este primer año como familia y contar con el cariño de todos ustedes. Nos dará muchísimo gusto que nos acompañen a festejar y dar gracias por este tiempo.
             </p>
             
             <!-- Detalles -->
@@ -380,10 +399,11 @@
             
             <!-- Nota del postre opcional -->
             <div class="note-box">
-                🍰 <strong>Nota:</strong> Si gustan, pueden traer su postre de preferencia para compartir.
+                <p style="margin-bottom: 10px;">🧁 <strong>Nota:</strong> Si gustan, pueden traer su postre favorito para compartir entre todos.</p>
+                <p>✨ <strong>Vestimenta:</strong> Casual elegante (arreglados para la ocasión, pero cómodos para disfrutar la tarde).</p>
             </div>
             
-            <p class="footer-message">¡Esperamos verlos ahí para disfrutar juntos!</p>
+            <p class="footer-message">¡Esperamos verlos para disfrutar juntos!</p>
                         
             <!-- Botón de Confirmación Activo -->
             <button type="button" class="rsvp-button" id="toggleFormBtn" onclick="mostrarFormulario()">
